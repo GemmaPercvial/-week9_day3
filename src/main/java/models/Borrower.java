@@ -6,6 +6,7 @@ import java.util.ArrayList;
 @Entity
 @Table(name="borrowers")
 public class Borrower {
+
     private int id;
     private String name;
     private ArrayList<Book> itemsBorrowed;
@@ -35,7 +36,8 @@ public class Borrower {
         this.name = name;
     }
 
-    @Column(name="items_borrowed")
+
+    @OneToMany(mappedBy="borrower", fetch = FetchType.LAZY)
     public ArrayList<Book> getItemsBorrowed() {
         return itemsBorrowed;
     }
